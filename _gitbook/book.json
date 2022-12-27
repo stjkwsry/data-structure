@@ -1,0 +1,18 @@
+{
+	"title": "Python基础",
+	"language": "zh-hans",
+	"styles": {
+		"website": "styles/website.css"
+	},
+	"plugins": [
+		"-sharing",
+		"katex"
+	],
+	"pluginsConfig": {
+		"fontSettings": {
+			"size": 2,
+			"family": "serif",
+			"theme": "white"
+		}
+	}
+}
