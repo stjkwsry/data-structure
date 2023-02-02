@@ -6,4 +6,5 @@
 
 ## 友情链接
 
+- [JSP 学习笔记](https://stjkwsry.github.io/jsp)
 - [Python 学习笔记](https://stjkwsry.github.io/python)
