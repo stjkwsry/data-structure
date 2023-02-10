@@ -1,0 +1,1978 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>稀疏矩阵 · 数据结构</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="04 对角矩阵.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    绪论
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../01 绪论/01 数据及其逻辑结构.html">
+            
+                <a href="../01 绪论/01 数据及其逻辑结构.html">
+            
+                    
+                    数据及其逻辑结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../01 绪论/02 数据结构的概念.html">
+            
+                <a href="../01 绪论/02 数据结构的概念.html">
+            
+                    
+                    数据结构的概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../01 绪论/03 数据结构的二元组描述.html">
+            
+                <a href="../01 绪论/03 数据结构的二元组描述.html">
+            
+                    
+                    数据结构的二元组描述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../01 绪论/04 数据结构的存储实现.html">
+            
+                <a href="../01 绪论/04 数据结构的存储实现.html">
+            
+                    
+                    数据结构的存储实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../01 绪论/05 数据结构的运算实现.html">
+            
+                <a href="../01 绪论/05 数据结构的运算实现.html">
+            
+                    
+                    数据结构的运算实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../01 绪论/06 算法的概念.html">
+            
+                <a href="../01 绪论/06 算法的概念.html">
+            
+                    
+                    算法的概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../01 绪论/07 算法的描述.html">
+            
+                <a href="../01 绪论/07 算法的描述.html">
+            
+                    
+                    算法的描述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../01 绪论/08 算法分析.html">
+            
+                <a href="../01 绪论/08 算法分析.html">
+            
+                    
+                    算法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    线性表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../02 线性表/01 线性表的基本概念.html">
+            
+                <a href="../02 线性表/01 线性表的基本概念.html">
+            
+                    
+                    线性表的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../02 线性表/02 顺序线性表.html">
+            
+                <a href="../02 线性表/02 顺序线性表.html">
+            
+                    
+                    顺序线性表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../02 线性表/03 链式线性表.html">
+            
+                <a href="../02 线性表/03 链式线性表.html">
+            
+                    
+                    链式线性表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../02 线性表/04 顺序与链式的算法效率分析.html">
+            
+                <a href="../02 线性表/04 顺序与链式的算法效率分析.html">
+            
+                    
+                    顺序与链式的算法效率分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../02 线性表/05 循环链表.html">
+            
+                <a href="../02 线性表/05 循环链表.html">
+            
+                    
+                    循环链表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../02 线性表/06 双向链表.html">
+            
+                <a href="../02 线性表/06 双向链表.html">
+            
+                    
+                    双向链表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../02 线性表/07 静态链表.html">
+            
+                <a href="../02 线性表/07 静态链表.html">
+            
+                    
+                    静态链表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    栈
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../03 栈/01 栈的基本概念.html">
+            
+                <a href="../03 栈/01 栈的基本概念.html">
+            
+                    
+                    栈的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../03 栈/02 顺序栈.html">
+            
+                <a href="../03 栈/02 顺序栈.html">
+            
+                    
+                    顺序栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../03 栈/03 链栈.html">
+            
+                <a href="../03 栈/03 链栈.html">
+            
+                    
+                    链栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../04 队列/01 队列的基本概念.html">
+            
+                <a href="../04 队列/01 队列的基本概念.html">
+            
+                    
+                    队列的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../04 队列/02 顺序队列.html">
+            
+                <a href="../04 队列/02 顺序队列.html">
+            
+                    
+                    顺序队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../04 队列/03 循环队列.html">
+            
+                <a href="../04 队列/03 循环队列.html">
+            
+                    
+                    循环队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../04 队列/04 链队列.html">
+            
+                <a href="../04 队列/04 链队列.html">
+            
+                    
+                    链队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../04 队列/05 循环链队列.html">
+            
+                <a href="../04 队列/05 循环链队列.html">
+            
+                    
+                    循环链队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    串
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../05 串/01 串的基本概念.html">
+            
+                <a href="../05 串/01 串的基本概念.html">
+            
+                    
+                    串的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../05 串/02 顺序串.html">
+            
+                <a href="../05 串/02 顺序串.html">
+            
+                    
+                    顺序串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../05 串/03 链串.html">
+            
+                <a href="../05 串/03 链串.html">
+            
+                    
+                    链串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../05 串/04 模式匹配算法.html">
+            
+                <a href="../05 串/04 模式匹配算法.html">
+            
+                    
+                    模式匹配算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    数组
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../06 数组/01 数组的基本概念.html">
+            
+                <a href="../06 数组/01 数组的基本概念.html">
+            
+                    
+                    数组的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../06 数组/02 一维数组.html">
+            
+                <a href="../06 数组/02 一维数组.html">
+            
+                    
+                    一维数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../06 数组/03 二维数组.html">
+            
+                <a href="../06 数组/03 二维数组.html">
+            
+                    
+                    二维数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    矩阵
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="01 矩阵的基本概念.html">
+            
+                <a href="01 矩阵的基本概念.html">
+            
+                    
+                    矩阵的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="02 对称矩阵.html">
+            
+                <a href="02 对称矩阵.html">
+            
+                    
+                    对称矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="03 三角矩阵.html">
+            
+                <a href="03 三角矩阵.html">
+            
+                    
+                    三角矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="04 对角矩阵.html">
+            
+                <a href="04 对角矩阵.html">
+            
+                    
+                    对角矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.5" data-path="05 稀疏矩阵.html">
+            
+                <a href="05 稀疏矩阵.html">
+            
+                    
+                    稀疏矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    广义表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../08 广义表/01 广义表的基本概念.html">
+            
+                <a href="../08 广义表/01 广义表的基本概念.html">
+            
+                    
+                    广义表的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../08 广义表/02 广义表的存储结构.html">
+            
+                <a href="../08 广义表/02 广义表的存储结构.html">
+            
+                    
+                    广义表的存储结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    树
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../09 树/01 树的基本概念.html">
+            
+                <a href="../09 树/01 树的基本概念.html">
+            
+                    
+                    树的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../09 树/02 二叉树的基本概念.html">
+            
+                <a href="../09 树/02 二叉树的基本概念.html">
+            
+                    
+                    二叉树的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../09 树/03 特殊二叉树.html">
+            
+                <a href="../09 树/03 特殊二叉树.html">
+            
+                    
+                    特殊二叉树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../09 树/04 二叉树的性质.html">
+            
+                <a href="../09 树/04 二叉树的性质.html">
+            
+                    
+                    二叉树的性质
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../09 树/05 二叉树的存储结构.html">
+            
+                <a href="../09 树/05 二叉树的存储结构.html">
+            
+                    
+                    二叉树的存储结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../09 树/06 二叉树的递归遍历.html">
+            
+                <a href="../09 树/06 二叉树的递归遍历.html">
+            
+                    
+                    二叉树的递归遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../09 树/07 二叉树的非递归遍历.html">
+            
+                <a href="../09 树/07 二叉树的非递归遍历.html">
+            
+                    
+                    二叉树的非递归遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../09 树/08 二叉树的唯一性问题.html">
+            
+                <a href="../09 树/08 二叉树的唯一性问题.html">
+            
+                    
+                    二叉树的唯一性问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../09 树/09 二叉树遍历的应用算法.html">
+            
+                <a href="../09 树/09 二叉树遍历的应用算法.html">
+            
+                    
+                    二叉树遍历的应用算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../09 树/10 线索二叉树的基本概念.html">
+            
+                <a href="../09 树/10 线索二叉树的基本概念.html">
+            
+                    
+                    线索二叉树的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../09 树/11 二叉树的线索化.html">
+            
+                <a href="../09 树/11 二叉树的线索化.html">
+            
+                    
+                    二叉树的线索化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../09 树/12 在线索二叉树中查找结点.html">
+            
+                <a href="../09 树/12 在线索二叉树中查找结点.html">
+            
+                    
+                    在线索二叉树中查找结点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../09 树/13 树的存储结构.html">
+            
+                <a href="../09 树/13 树的存储结构.html">
+            
+                    
+                    树的存储结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="../09 树/14 树、森林与二叉树的相互转换.html">
+            
+                <a href="../09 树/14 树、森林与二叉树的相互转换.html">
+            
+                    
+                    树、森林与二叉树的相互转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="../09 树/15 树的遍历.html">
+            
+                <a href="../09 树/15 树的遍历.html">
+            
+                    
+                    树的遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.16" data-path="../09 树/16 森林的遍历.html">
+            
+                <a href="../09 树/16 森林的遍历.html">
+            
+                    
+                    森林的遍历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.17" data-path="../09 树/17 哈夫曼树的基本概念.html">
+            
+                <a href="../09 树/17 哈夫曼树的基本概念.html">
+            
+                    
+                    哈夫曼树的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.18" data-path="../09 树/18 哈夫曼编码的基本概念.html">
+            
+                <a href="../09 树/18 哈夫曼编码的基本概念.html">
+            
+                    
+                    哈夫曼编码的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.19" data-path="../09 树/19 哈夫曼树和哈夫曼编码的构造.html">
+            
+                <a href="../09 树/19 哈夫曼树和哈夫曼编码的构造.html">
+            
+                    
+                    哈夫曼树和哈夫曼编码的构造
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    图
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../10 图/01 图的基本概念.html">
+            
+                <a href="../10 图/01 图的基本概念.html">
+            
+                    
+                    图的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../10 图/02 图的基本运算的抽象.html">
+            
+                <a href="../10 图/02 图的基本运算的抽象.html">
+            
+                    
+                    图的基本运算的抽象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../10 图/03 图的邻接矩阵表示.html">
+            
+                <a href="../10 图/03 图的邻接矩阵表示.html">
+            
+                    
+                    图的邻接矩阵表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../10 图/04 图的邻接表表示.html">
+            
+                <a href="../10 图/04 图的邻接表表示.html">
+            
+                    
+                    图的邻接表表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../10 图/05 图的十字链表表示.html">
+            
+                <a href="../10 图/05 图的十字链表表示.html">
+            
+                    
+                    图的十字链表表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../10 图/06 图的遍历算法.html">
+            
+                <a href="../10 图/06 图的遍历算法.html">
+            
+                    
+                    图的遍历算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="../10 图/07 图的遍历序列的唯一性.html">
+            
+                <a href="../10 图/07 图的遍历序列的唯一性.html">
+            
+                    
+                    图的遍历序列的唯一性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="../10 图/08 图的连通性.html">
+            
+                <a href="../10 图/08 图的连通性.html">
+            
+                    
+                    图的连通性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.9" data-path="../10 图/09 最小生成树.html">
+            
+                <a href="../10 图/09 最小生成树.html">
+            
+                    
+                    最小生成树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.10" data-path="../10 图/10 最短路径.html">
+            
+                <a href="../10 图/10 最短路径.html">
+            
+                    
+                    最短路径
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="../10 图/11 拓扑排序.html">
+            
+                <a href="../10 图/11 拓扑排序.html">
+            
+                    
+                    拓扑排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="../10 图/12 关键路径.html">
+            
+                <a href="../10 图/12 关键路径.html">
+            
+                    
+                    关键路径
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    查找表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../11 查找表/01 查找表的基本概念.html">
+            
+                <a href="../11 查找表/01 查找表的基本概念.html">
+            
+                    
+                    查找表的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../11 查找表/02 顺序查找.html">
+            
+                <a href="../11 查找表/02 顺序查找.html">
+            
+                    
+                    顺序查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../11 查找表/03 二分查找.html">
+            
+                <a href="../11 查找表/03 二分查找.html">
+            
+                    
+                    二分查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../11 查找表/04 分块查找.html">
+            
+                <a href="../11 查找表/04 分块查找.html">
+            
+                    
+                    分块查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../11 查找表/05 二叉排序树.html">
+            
+                <a href="../11 查找表/05 二叉排序树.html">
+            
+                    
+                    二叉排序树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../11 查找表/06 平衡二叉树.html">
+            
+                <a href="../11 查找表/06 平衡二叉树.html">
+            
+                    
+                    平衡二叉树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    哈希表
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../12 哈希表/01 哈希表的基本概念.html">
+            
+                <a href="../12 哈希表/01 哈希表的基本概念.html">
+            
+                    
+                    哈希表的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../12 哈希表/02 处理哈希冲突的概念.html">
+            
+                <a href="../12 哈希表/02 处理哈希冲突的概念.html">
+            
+                    
+                    处理哈希冲突的概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../12 哈希表/03 哈希函数的构造方法.html">
+            
+                <a href="../12 哈希表/03 哈希函数的构造方法.html">
+            
+                    
+                    哈希函数的构造方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../12 哈希表/04 处理哈希冲突的方法.html">
+            
+                <a href="../12 哈希表/04 处理哈希冲突的方法.html">
+            
+                    
+                    处理哈希冲突的方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../12 哈希表/05 哈希表的查找及性能分析.html">
+            
+                <a href="../12 哈希表/05 哈希表的查找及性能分析.html">
+            
+                    
+                    哈希表的查找及性能分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    排序
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../13 排序/01 排序的基本概念.html">
+            
+                <a href="../13 排序/01 排序的基本概念.html">
+            
+                    
+                    排序的基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../13 排序/02 直接插入排序.html">
+            
+                <a href="../13 排序/02 直接插入排序.html">
+            
+                    
+                    直接插入排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../13 排序/03 折半插入排序.html">
+            
+                <a href="../13 排序/03 折半插入排序.html">
+            
+                    
+                    折半插入排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="../13 排序/04 希尔排序.html">
+            
+                <a href="../13 排序/04 希尔排序.html">
+            
+                    
+                    希尔排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="../13 排序/05 简单选择排序.html">
+            
+                <a href="../13 排序/05 简单选择排序.html">
+            
+                    
+                    简单选择排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="../13 排序/06 堆排序.html">
+            
+                <a href="../13 排序/06 堆排序.html">
+            
+                    
+                    堆排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7" data-path="../13 排序/07 冒泡排序.html">
+            
+                <a href="../13 排序/07 冒泡排序.html">
+            
+                    
+                    冒泡排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="../13 排序/08 快速排序.html">
+            
+                <a href="../13 排序/08 快速排序.html">
+            
+                    
+                    快速排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.9" data-path="../13 排序/09 归并排序.html">
+            
+                <a href="../13 排序/09 归并排序.html">
+            
+                    
+                    归并排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.10" data-path="../13 排序/10 基数排序.html">
+            
+                <a href="../13 排序/10 基数排序.html">
+            
+                    
+                    基数排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.11" data-path="../13 排序/11 排序方法的比较讨论.html">
+            
+                <a href="../13 排序/11 排序方法的比较讨论.html">
+            
+                    
+                    排序方法的比较讨论
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../将数据结构封装并使用.html">
+            
+                <a href="../将数据结构封装并使用.html">
+            
+                    
+                    将数据结构封装并使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../参考文献.html">
+            
+                <a href="../参考文献.html">
+            
+                    
+                    参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+</ul>
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >稀疏矩阵</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;"><b></b>&#x57FA;&#x672C;&#x6982;&#x5FF5;</a></li><li><span class="title-icon "></span><a href="#&#x5B58;&#x50A8;&#x65B9;&#x5F0F;"><b></b>&#x5B58;&#x50A8;&#x65B9;&#x5F0F;</a></li><ul><li><span class="title-icon "></span><a href="#&#x4E09;&#x5143;&#x7EC4;&#x5B58;&#x50A8;"><b></b>&#x4E09;&#x5143;&#x7EC4;&#x5B58;&#x50A8;</a></li><li><span class="title-icon "></span><a href="#&#x5341;&#x5B57;&#x94FE;&#x8868;&#x5B58;&#x50A8;"><b></b>&#x5341;&#x5B57;&#x94FE;&#x8868;&#x5B58;&#x50A8;</a></li></ul><li><span class="title-icon "></span><a href="#&#x8F6C;&#x7F6E;"><b></b>&#x8F6C;&#x7F6E;</a></li><ul><li><span class="title-icon "></span><a href="#&#x666E;&#x901A;&#x8F6C;&#x7F6E;"><b></b>&#x666E;&#x901A;&#x8F6C;&#x7F6E;</a></li><li><span class="title-icon "></span><a href="#&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;"><b></b>&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;</a></li></ul></ul></div><a href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x57FA;&#x672C;&#x6982;&#x5FF5;"><a name="&#x57FA;&#x672C;&#x6982;&#x5FF5;" class="anchor-navigation-ex-anchor" href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x57FA;&#x672C;&#x6982;&#x5FF5;</h1>
+<p>&#x82E5;&#x77E9;&#x9635;&#x4E2D;&#x7684;<strong>&#x96F6;&#x5143;&#x7D20;&#x975E;&#x5E38;&#x591A;</strong>&#x3001;<strong>&#x975E;&#x96F6;&#x5143;&#x7D20;&#x8F83;&#x5C11;</strong>&#x3001;<strong>&#x5206;&#x5E03;&#x6CA1;&#x6709;&#x89C4;&#x5F8B;</strong>&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x79F0;&#x6B64;&#x77E9;&#x9635;&#x4E3A;<strong>&#x7A00;&#x758F;&#x77E9;&#x9635;&#xFF08;Sparse Matrix&#xFF09;</strong>&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mrow><mo>&#xD7;</mo></mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">m{\times}n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mord textstyle uncramped"><span class="mord">&#xD7;</span></span><span class="mord mathit">n</span></span></span></span> &#x7684;&#x77E9;&#x9635;&#xFF0C;&#x77E9;&#x9635;&#x5143;&#x7D20;&#x603B;&#x6570;&#x4E3A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><mi>m</mi><mrow><mo>&#xD7;</mo></mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">s=m{\times}n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">s</span><span class="mrel">=</span><span class="mord mathit">m</span><span class="mord textstyle uncramped"><span class="mord">&#xD7;</span></span><span class="mord mathit">n</span></span></span></span>&#xFF0C;&#x8BBE; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.61508em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">t</span></span></span></span> &#x4E3A;&#x77E9;&#x9635;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#xFF0C;<strong>&#x82E5; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.61508em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">t</span></span></span></span> &#x8FDC;&#x8FDC;&#x5C0F;&#x4E8E; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">s</span></span></span></span></strong>&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x8BE5;&#x77E9;&#x9635;&#x4E3A;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x3002;</p>
+<p>&#x4EE4;&#xFF1A;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3B4;</mi><mo>=</mo><mfrac><mrow><mi>t</mi></mrow><mrow><mi>m</mi><mo>&#xD7;</mo><mrow><mi>n</mi></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">\delta=\frac{t}{m\times{n}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.824556em;"></span><span class="strut bottom" style="height:1.227887em;vertical-align:-0.403331em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03785em;">&#x3B4;</span><span class="mrel">=</span><span class="mord reset-textstyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">m</span><span class="mbin mtight">&#xD7;</span><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">n</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathit mtight">t</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span>&#xFF0C;&#x79F0; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi>&#x3B4;</mi></mrow></mrow><annotation encoding="application/x-tex">{\delta}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.03785em;">&#x3B4;</span></span></span></span></span> &#x4E3A;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;<strong>&#x7A00;&#x758F;&#x56E0;&#x5B50;</strong>&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;<strong>&#x5F53; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi>&#x3B4;</mi></mrow></mrow><annotation encoding="application/x-tex">{\delta}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.03785em;">&#x3B4;</span></span></span></span></span> &#x8FDC;&#x8FDC;&#x5C0F;&#x4E8E; 0.05 &#x65F6;</strong>&#xFF0C;&#x624D;&#x79F0;&#x77E9;&#x9635;&#x4E3A;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x3002;</p>
+<h1 id="&#x5B58;&#x50A8;&#x65B9;&#x5F0F;"><a name="&#x5B58;&#x50A8;&#x65B9;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#&#x5B58;&#x50A8;&#x65B9;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B58;&#x50A8;&#x65B9;&#x5F0F;</h1>
+<h2 id="&#x4E09;&#x5143;&#x7EC4;&#x5B58;&#x50A8;"><a name="&#x4E09;&#x5143;&#x7EC4;&#x5B58;&#x50A8;" class="anchor-navigation-ex-anchor" href="#&#x4E09;&#x5143;&#x7EC4;&#x5B58;&#x50A8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E09;&#x5143;&#x7EC4;&#x5B58;&#x50A8;</h2>
+<p>&#x548C;&#x7279;&#x6B8A;&#x77E9;&#x9635;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x4E2D;&#x7684;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x5E76;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x5206;&#x5E03;&#x89C4;&#x5F8B;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4FBF;&#x5229;&#x7528;&#x4E0B;&#x6807;&#x53D8;&#x6362;&#x516C;&#x5F0F;&#x5C06;&#x5176;&#x6620;&#x5C04;&#x5230;&#x4E00;&#x7EF4;&#x6570;&#x7EC4;&#x4E2D;&#x3002;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x5E38;&#x5E38;&#x8F83;&#x5927;&#xFF0C;&#x4F8B;&#x5982;&#x4E00;&#x4E2A; 100*100 &#x7684;&#x77E9;&#x9635;&#x53EA;&#x6709; 50 &#x4E2A;&#x975E;&#x96F6;&#x5143;&#x7D20;&#xFF0C;&#x82E5;&#x5B58;&#x50A8;&#x77E9;&#x9635;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5143;&#x7D20;&#xFF08;10000 &#x4E2A;&#xFF09;&#x4F1A;&#x6D6A;&#x8D39;&#x5927;&#x91CF;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;<strong>&#x53EA;&#x8003;&#x8651;&#x5B58;&#x50A8;&#x5176;&#x4E2D;&#x7684;&#x975E;&#x96F6;&#x5143;&#x7D20;</strong>&#xFF0C;&#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x4E86;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;<strong>&#x538B;&#x7F29;&#x5B58;&#x50A8;</strong>&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x7684;&#x5206;&#x5E03;&#x65E0;&#x89C4;&#x5F8B;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E00;&#x4E2A;<strong>&#x5305;&#x542B;&#x884C;&#x4E0B;&#x6807;&#x3001;&#x5217;&#x4E0B;&#x6807;&#x548C;&#x77E9;&#x9635;&#x5143;&#x7D20;&#x503C;&#x7684;&#x4E09;&#x5143;&#x7EC4;</strong>&#xFF0C;&#x552F;&#x4E00;&#x5730;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#x5143;&#x7D20;&#xFF0C;&#x518D;&#x7531;&#x6240;&#x6709;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x7684;&#x4E09;&#x5143;&#x7EC4;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x7EBF;&#x6027;&#x8868;&#xFF08;&#x79F0;&#x4E4B;&#x4E3A;<strong>&#x4E09;&#x5143;&#x7EC4;&#x8868;</strong>&#xFF09;&#x6765;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x7A00;&#x758F;&#x77E9;&#x9635;&#xFF0C;&#x793A;&#x610F;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="D:/Program Files (x86" alt="">/github/data-structure/_gitbook/articles/07 &#x77E9;&#x9635;/images/&#x7A00;&#x758F;&#x77E9;&#x9635;.png)</p>
+<p>&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;&#x4E09;&#x5143;&#x7EC4;&#x8868;&#x4E00;&#x822C;<strong>&#x4EE5;&#x884C;&#x4F18;&#x5148;&#x3001;&#x987A;&#x5E8F;&#x5B58;&#x50A8;&#x5143;&#x7D20;</strong>&#xFF0C;&#x5176;&#x4E00;&#x822C;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-comment">// &#x975E;&#x96F6;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x7684;&#x6700;&#x5927;&#x503C;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SIZE 100</span>
+
+<span class="hljs-comment">// &#x4E09;&#x5143;&#x7EC4;</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// &#x5143;&#x7D20;&#x7684;&#x503C;&#xFF0C;&#x6B64;&#x5904;&#x4E3A; int &#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;</span>
+    <span class="hljs-keyword">int</span> e;
+    <span class="hljs-comment">// &#x5143;&#x7D20;&#x6240;&#x5904;&#x884C;&#x3001;&#x5143;&#x7D20;&#x6240;&#x5904;&#x5217;</span>
+    <span class="hljs-keyword">int</span> row, col;
+} Triple;
+
+<span class="hljs-comment">// &#x7A00;&#x758F;&#x77E9;&#x9635;</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// &#x4E09;&#x5143;&#x7EC4;&#x8868;&#xFF0C;&#x4ECE; 1 &#x4E0B;&#x6807;&#x5F00;&#x59CB;&#x5B58;&#x50A8;&#x5143;&#x7D20;&#xFF0C;0 &#x4E0B;&#x6807;&#x4E0D;&#x4F7F;&#x7528;</span>
+    Triple <span class="hljs-built_in">array</span>[SIZE+<span class="hljs-number">1</span>];
+    <span class="hljs-comment">// &#x77E9;&#x9635;&#x7684;&#x884C;&#x6570;&#x3001;&#x77E9;&#x9635;&#x7684;&#x5217;&#x6570;&#x3001;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;</span>
+    <span class="hljs-keyword">int</span> row_num, col_num, e_num;
+} Matrix;
+</code></pre>
+<p>&#x5176;&#x4E00;&#x822C;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-comment">// &#x521B;&#x5EFA;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;&#x4E09;&#x5143;&#x7EC4;&#x8868;&#x793A;</span>
+<span class="hljs-function">Status <span class="hljs-title">CreateMatrix</span><span class="hljs-params">(Matrix &amp;m)</span> </span>{
+    <span class="hljs-comment">// 0 &#x4E0B;&#x6807;&#x4E0D;&#x4F7F;&#x7528;</span>
+    m.<span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>].row = m.<span class="hljs-built_in">array</span>[<span class="hljs-number">0</span>].col = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// &#x63A5;&#x6536;&#x77E9;&#x9635;&#x7684;&#x89C4;&#x6A21;</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x77E9;&#x9635;&#x7684;&#x884C;&#x6570;&#x3001;&#x5217;&#x6570;&#x3001;&#x975E;&#x96F6;&#x5143;&#x7D20;&#xFF0C;&#x683C;&#x5F0F;&#x4E3A;&#x3010;%%d,%%d,%%d&#x3011;&#xFF1A;\n&quot;</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d,%d,%d&quot;</span>, &amp;m.row_num, &amp;m.col_num, &amp;m.e_num);
+
+    <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E09;&#x5143;&#x7EC4;&#x4E34;&#x65F6;&#x53D8;&#x91CF;</span>
+    Triple temp;
+    <span class="hljs-comment">// &#x5B58;&#x50A8;&#x77E9;&#x9635;&#x5143;&#x7D20;</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m.e_num; i++) {
+        <span class="hljs-comment">// &#x7528;&#x6B7B;&#x5FAA;&#x73AF;&#x6765;&#x6821;&#x9A8C;&#x8F93;&#x5165;&#x7684;&#x6709;&#x6548;&#x6027;&#xFF0C;&#x8F93;&#x5165;&#x6B63;&#x786E;&#x65F6;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;</span>
+        <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) {
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&#x8BF7;&#x6309;&#x884C;&#x5E8F;&#x987A;&#x5E8F;&#x8F93;&#x5165;&#x7B2C;%d&#x4E2A;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x6240;&#x5728;&#x7684;&#x884C;&#x3001;&#x5217;&#x3001;&#x5143;&#x7D20;&#x503C;&#xFF0C;&#x683C;&#x5F0F;&#x4E3A;&#x3010;%%d,%%d,%%d&#x3011;&#xFF1A;\n&quot;</span>, i);
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d,%d,%d&quot;</span>, &amp;temp.row, &amp;temp.col, &amp;temp.e);
+            <span class="hljs-comment">// &#x6821;&#x9A8C;&#x5143;&#x7D20;&#x7684;&#x884C;&#x5217;&#x662F;&#x5426;&#x8D85;&#x51FA;&#x8FB9;&#x754C;</span>
+            <span class="hljs-keyword">if</span> (temp.row &lt; <span class="hljs-number">1</span> || temp.col &lt; <span class="hljs-number">1</span> || temp.row &gt; m.row_num || temp.col &gt; m.col_num) {
+                <span class="hljs-keyword">continue</span>;
+            }
+            <span class="hljs-comment">// &#x6821;&#x9A8C;&#x5143;&#x7D20;&#x7684;&#x884C;&#x5217;&#x662F;&#x5426;&#x5C0F;&#x4E8E;&#x4E0A;&#x4E00;&#x4E2A;&#x5143;&#x7D20;</span>
+            <span class="hljs-keyword">if</span> (temp.row &lt; m.<span class="hljs-built_in">array</span>[i - <span class="hljs-number">1</span>].row || (temp.row == m.<span class="hljs-built_in">array</span>[i - <span class="hljs-number">1</span>].row &amp;&amp; temp.col &lt;= m.<span class="hljs-built_in">array</span>[i<span class="hljs-number">-1</span>].col)) {
+                <span class="hljs-keyword">continue</span>;
+            }
+            <span class="hljs-comment">// &#x5B58;&#x50A8;&#x5143;&#x7D20;</span>
+            m.<span class="hljs-built_in">array</span>[i] = temp;
+            <span class="hljs-keyword">break</span>;
+        }
+    }
+    <span class="hljs-keyword">return</span> OK;
+}
+
+<span class="hljs-comment">// &#x6253;&#x5370;&#x7A00;&#x758F;&#x77E9;&#x9635;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PrintMatrix</span><span class="hljs-params">(Matrix m)</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&#x884C;\t&#x5217;\t&#x503C;\n&quot;</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i&lt;= m.e_num; i++) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\t%d\t%d\n&quot;</span>, m.<span class="hljs-built_in">array</span>[i].row, m.<span class="hljs-built_in">array</span>[i].col, m.<span class="hljs-built_in">array</span>[i].e);
+    }
+}
+
+<span class="hljs-comment">// &#x77E9;&#x9635;&#x548C;&#xFF0C;&#x5C06;&#x4E24;&#x77E9;&#x9635;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x63C9;&#x5408;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x77E9;&#x9635;&#xFF0C;&#x76F8;&#x540C;&#x4F4D;&#x7F6E;&#x7684;&#x5143;&#x7D20;&#x503C;&#x76F8;&#x52A0;</span>
+<span class="hljs-function">Status <span class="hljs-title">AddMatrix</span><span class="hljs-params">(Matrix m1, Matrix m2, Matrix &amp;_new)</span> </span>{
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x4E24;&#x77E9;&#x9635;&#x7684;&#x884C;&#x4E0E;&#x5217;&#x7684;&#x6570;&#x91CF;&#x4E0D;&#x76F8;&#x7B49;</span>
+    <span class="hljs-keyword">if</span> (m1.row_num != m2.row_num || m1.col_num != m2.col_num) {
+        <span class="hljs-keyword">return</span> ERROR;
+    }
+
+    <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;&#x65B0;&#x77E9;&#x9635;</span>
+    _new.row_num = m1.row_num;
+    _new.col_num = m1.col_num;
+    _new.e_num = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// &#x5B58;&#x50A8;&#x65B0;&#x77E9;&#x9635;&#x7684;&#x5143;&#x7D20;&#xFF0C;i &#x662F; _new &#x7684;&#x4E0B;&#x6807;&#xFF0C;j &#x662F; m1 &#x7684;&#x4E0B;&#x6807;&#xFF0C;k &#x662F; m2 &#x7684;&#x4E0B;&#x6807;</span>
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">1</span>, k = <span class="hljs-number">1</span>;
+    <span class="hljs-comment">// &#x6309;&#x7167;&#x884C;&#x5217;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x7684;&#x987A;&#x5E8F;&#x5B58;&#x50A8;</span>
+    <span class="hljs-comment">// &#x82E5;&#x662F;&#x4E24;&#x5143;&#x7D20;&#x884C;&#x5217;&#x76F8;&#x540C;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x503C;&#x76F8;&#x52A0;</span>
+    <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x5FAA;&#x73AF;&#x53EA;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x884C;&#x5217;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x9632;&#x6B62;&#x540C;&#x65F6;&#x5B58;&#x50A8;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x884C;&#x5217;&#x7684;&#x5143;&#x7D20;&#x540E;&#xFF0C;&#x5BFC;&#x81F4;&#x5927;&#x5C0F;&#x6392;&#x5E8F;&#x6DF7;&#x4E71;&#x4EE5;&#x53CA;&#x9519;&#x8FC7;&#x884C;&#x5217;&#x76F8;&#x540C;&#x7684;&#x4E24;&#x5143;&#x7D20;</span>
+    <span class="hljs-keyword">while</span> (j &lt;= m1.e_num &amp;&amp; k &lt;= m2.e_num) {
+        <span class="hljs-comment">// &#x9996;&#x5148;&#x8003;&#x8651;&#x4E24;&#x5143;&#x7D20;&#x6240;&#x5904;&#x884C;&#x4E0D;&#x76F8;&#x7B49;&#x7684;&#x60C5;&#x51B5;</span>
+        <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].row != m2.<span class="hljs-built_in">array</span>[k].row) {
+            <span class="hljs-comment">// &#x5C06;&#x884C;&#x5C0F;&#x7684;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230; _new &#x4E2D;</span>
+            <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].row &lt; m2.<span class="hljs-built_in">array</span>[k].row) {
+                _new.<span class="hljs-built_in">array</span>[i++] = m1.<span class="hljs-built_in">array</span>[j++];
+            } <span class="hljs-keyword">else</span> {
+                _new.<span class="hljs-built_in">array</span>[i++] = m2.<span class="hljs-built_in">array</span>[k++];
+            }
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// &#x5982;&#x679C;&#x6240;&#x5904;&#x5217;&#x4E5F;&#x76F8;&#x7B49;&#xFF0C;&#x5C31;&#x5C06;&#x4E24;&#x5143;&#x7D20;&#x503C;&#x76F8;&#x52A0;</span>
+            <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].col == m2.<span class="hljs-built_in">array</span>[k].col) {
+                <span class="hljs-comment">// &#x82E5;&#x5143;&#x7D20;&#x548C;&#x4E3A;&#x96F6;&#xFF0C;&#x5219;&#x4E0D;&#x5B58;&#x50A8;</span>
+                <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].e + m2.<span class="hljs-built_in">array</span>[k].e == <span class="hljs-number">0</span>) {
+                    <span class="hljs-keyword">continue</span>;
+                }
+                _new.<span class="hljs-built_in">array</span>[i] = m1.<span class="hljs-built_in">array</span>[j++];
+                _new.<span class="hljs-built_in">array</span>[i++].e += m2.<span class="hljs-built_in">array</span>[k++].e;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">// &#x5C06;&#x5217;&#x5C0F;&#x7684;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230; _new &#x4E2D;</span>
+                <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].col &lt; m2.<span class="hljs-built_in">array</span>[k].col) {
+                    _new.<span class="hljs-built_in">array</span>[i++] = m1.<span class="hljs-built_in">array</span>[j++];
+                } <span class="hljs-keyword">else</span> {
+                    _new.<span class="hljs-built_in">array</span>[i++] = m2.<span class="hljs-built_in">array</span>[k++];
+                }
+            }
+        }
+        <span class="hljs-comment">// &#x66F4;&#x65B0; _new &#x5185;&#x5B58;&#x50A8;&#x7684;&#x5143;&#x7D20;&#x6570;&#x91CF;</span>
+        _new.e_num++; 
+    }
+
+    <span class="hljs-comment">// &#x5B58;&#x50A8;&#x9057;&#x6F0F;&#x7684;&#x5143;&#x7D20;</span>
+    <span class="hljs-comment">// &#x5269;&#x4E0B;&#x7684;&#x5143;&#x7D20;&#x7684;&#x884C;&#x5217;&#x80AF;&#x5B9A;&#x6BD4;&#x73B0;&#x6709;&#x7684;&#x5143;&#x7D20;&#x5927;&#xFF0C;&#x6240;&#x4EE5;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8003;&#x8651;&#x5927;&#x5C0F;&#x6392;&#x5E8F;</span>
+    <span class="hljs-keyword">while</span> (j &lt;= m1.e_num) {
+        _new.<span class="hljs-built_in">array</span>[i++] = m1.<span class="hljs-built_in">array</span>[j++];
+        _new.e_num++; 
+    }
+    <span class="hljs-keyword">while</span> (k &lt;= m2.e_num) {
+        _new.<span class="hljs-built_in">array</span>[i++] = m2.<span class="hljs-built_in">array</span>[k++];
+        _new.e_num++; 
+    }
+    <span class="hljs-keyword">return</span> OK;
+}
+
+<span class="hljs-comment">// &#x77E9;&#x9635;&#x5DEE;&#xFF0C;m1 - m2 </span>
+<span class="hljs-function">Status <span class="hljs-title">SubMatrix</span><span class="hljs-params">(Matrix m1, Matrix m2, Matrix &amp;_new)</span> </span>{
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x4E24;&#x77E9;&#x9635;&#x7684;&#x884C;&#x4E0E;&#x5217;&#x7684;&#x6570;&#x91CF;&#x4E0D;&#x76F8;&#x7B49;</span>
+    <span class="hljs-keyword">if</span> (m1.row_num != m2.row_num || m1.col_num != m2.col_num) {
+        <span class="hljs-keyword">return</span> ERROR;
+    }
+
+    <span class="hljs-comment">// &#x5148;&#x5C06; m2 &#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x503C;&#x53D6;&#x76F8;&#x53CD;&#x6570;&#xFF08;&#x82E5;&#x89C4;&#x5B9A;&#x4E3A; m2 - m1&#xFF0C;&#x5219;&#x5C06; m1 &#x7684;&#x5143;&#x7D20;&#x53D6;&#x53CD;&#xFF09; </span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i&lt;= m2.e_num; i++) {
+        m2.<span class="hljs-built_in">array</span>[i].e *= <span class="hljs-number">-1</span>;
+    }
+    <span class="hljs-comment">// &#x518D;&#x8C03;&#x7528;&#x77E9;&#x9635;&#x548C;&#x7B97;&#x6CD5;&#x5373;&#x53EF;&#x5B8C;&#x6210;&#x77E9;&#x9635;&#x5DEE;&#x7B97;&#x6CD5;</span>
+    AddMatrix(m1, m2, _new);
+    <span class="hljs-keyword">return</span> OK;
+}
+
+<span class="hljs-comment">// &#x77E9;&#x9635;&#x79EF;</span>
+<span class="hljs-function">Status <span class="hljs-title">MultMatrix</span><span class="hljs-params">(Matrix m1, Matrix m2, Matrix &amp;_new)</span> </span>{
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x4E24;&#x77E9;&#x9635;&#x7684;&#x884C;&#x4E0E;&#x5217;&#x7684;&#x6570;&#x91CF;&#x4E0D;&#x76F8;&#x7B49;</span>
+    <span class="hljs-keyword">if</span> (m1.row_num != m2.row_num || m1.col_num != m2.col_num) {
+        <span class="hljs-keyword">return</span> ERROR;
+    }
+
+    <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;&#x65B0;&#x77E9;&#x9635;</span>
+    _new.row_num = m1.row_num;
+    _new.col_num = m1.col_num;
+    _new.e_num = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// &#x5B58;&#x50A8;&#x65B0;&#x77E9;&#x9635;&#x7684;&#x5143;&#x7D20;&#xFF0C;i &#x662F; _new &#x7684;&#x4E0B;&#x6807;&#xFF0C;j &#x662F; m1 &#x7684;&#x4E0B;&#x6807;&#xFF0C;k &#x662F; m2 &#x7684;&#x4E0B;&#x6807;</span>
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">1</span>, k = <span class="hljs-number">1</span>;
+    <span class="hljs-comment">// &#x6309;&#x7167;&#x884C;&#x5217;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x7684;&#x987A;&#x5E8F;&#x5B58;&#x50A8;</span>
+    <span class="hljs-comment">// &#x82E5;&#x662F;&#x4E24;&#x5143;&#x7D20;&#x884C;&#x5217;&#x76F8;&#x540C;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x503C;&#x76F8;&#x4E58;</span>
+    <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x5FAA;&#x73AF;&#x53EA;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x884C;&#x5217;&#x7684;&#x5143;&#x7D20;&#xFF08;&#x503C;&#x4E3A; 0&#xFF09;&#xFF0C;&#x9632;&#x6B62;&#x540C;&#x65F6;&#x5B58;&#x50A8;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x884C;&#x5217;&#x7684;&#x5143;&#x7D20;&#x540E;&#xFF0C;&#x5BFC;&#x81F4;&#x5927;&#x5C0F;&#x6392;&#x5E8F;&#x6DF7;&#x4E71;&#x4EE5;&#x53CA;&#x9519;&#x8FC7;&#x884C;&#x5217;&#x76F8;&#x540C;&#x7684;&#x4E24;&#x5143;&#x7D20;</span>
+    <span class="hljs-keyword">while</span> (j &lt;= m1.e_num &amp;&amp; k &lt;= m2.e_num) {
+        <span class="hljs-comment">// &#x9996;&#x5148;&#x8003;&#x8651;&#x4E24;&#x5143;&#x7D20;&#x6240;&#x5904;&#x884C;&#x4E0D;&#x76F8;&#x7B49;&#x7684;&#x60C5;&#x51B5;</span>
+        <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].row != m2.<span class="hljs-built_in">array</span>[k].row) {
+            <span class="hljs-comment">// &#x5C06;&#x884C;&#x5C0F;&#x7684;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230; _new &#x4E2D;</span>
+            <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].row &lt; m2.<span class="hljs-built_in">array</span>[k].row) {
+                _new.<span class="hljs-built_in">array</span>[i] = m1.<span class="hljs-built_in">array</span>[j++];
+                _new.<span class="hljs-built_in">array</span>[i++].e = <span class="hljs-number">0</span>;
+            } <span class="hljs-keyword">else</span> {
+                _new.<span class="hljs-built_in">array</span>[i] = m2.<span class="hljs-built_in">array</span>[k++];
+                _new.<span class="hljs-built_in">array</span>[i++].e = <span class="hljs-number">0</span>;
+            }
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// &#x5982;&#x679C;&#x6240;&#x5904;&#x5217;&#x4E5F;&#x76F8;&#x7B49;&#xFF0C;&#x5C31;&#x5C06;&#x4E24;&#x5143;&#x7D20;&#x503C;&#x76F8;&#x52A0;</span>
+            <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].col == m2.<span class="hljs-built_in">array</span>[k].col) {
+                _new.<span class="hljs-built_in">array</span>[i] = m1.<span class="hljs-built_in">array</span>[j++];
+                _new.<span class="hljs-built_in">array</span>[i++].e *= m2.<span class="hljs-built_in">array</span>[k++].e;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">// &#x5C06;&#x5217;&#x5C0F;&#x7684;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230; _new &#x4E2D;</span>
+                <span class="hljs-keyword">if</span> (m1.<span class="hljs-built_in">array</span>[j].col &lt; m2.<span class="hljs-built_in">array</span>[k].col) {
+                    _new.<span class="hljs-built_in">array</span>[i] = m1.<span class="hljs-built_in">array</span>[j++];
+                    _new.<span class="hljs-built_in">array</span>[i++].e = <span class="hljs-number">0</span>;
+                } <span class="hljs-keyword">else</span> {
+                    _new.<span class="hljs-built_in">array</span>[i] = m2.<span class="hljs-built_in">array</span>[k++];
+                    _new.<span class="hljs-built_in">array</span>[i++].e = <span class="hljs-number">0</span>;
+                }
+            }
+        }
+        <span class="hljs-comment">// &#x66F4;&#x65B0; _new &#x5185;&#x5B58;&#x50A8;&#x7684;&#x5143;&#x7D20;&#x6570;&#x91CF;</span>
+        _new.e_num++;
+    }
+
+    <span class="hljs-comment">// &#x5B58;&#x50A8;&#x9057;&#x6F0F;&#x7684;&#x5143;&#x7D20;</span>
+    <span class="hljs-comment">// &#x5269;&#x4E0B;&#x7684;&#x5143;&#x7D20;&#x7684;&#x884C;&#x5217;&#x80AF;&#x5B9A;&#x6BD4;&#x73B0;&#x6709;&#x7684;&#x5143;&#x7D20;&#x5927;&#xFF0C;&#x6240;&#x4EE5;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8003;&#x8651;&#x5927;&#x5C0F;&#x6392;&#x5E8F;</span>
+    <span class="hljs-keyword">while</span> (j &lt;= m1.e_num) {
+        _new.<span class="hljs-built_in">array</span>[i] = m1.<span class="hljs-built_in">array</span>[j++];
+        _new.<span class="hljs-built_in">array</span>[i++].e = <span class="hljs-number">0</span>;
+        _new.e_num++;
+    }
+    <span class="hljs-keyword">while</span> (k &lt;= m2.e_num) {
+        _new.<span class="hljs-built_in">array</span>[i] = m2.<span class="hljs-built_in">array</span>[k++];
+        _new.<span class="hljs-built_in">array</span>[i++].e = <span class="hljs-number">0</span>;
+        _new.e_num++;
+    }
+    <span class="hljs-keyword">return</span> OK;
+}
+</code></pre>
+<h2 id="&#x5341;&#x5B57;&#x94FE;&#x8868;&#x5B58;&#x50A8;"><a name="&#x5341;&#x5B57;&#x94FE;&#x8868;&#x5B58;&#x50A8;" class="anchor-navigation-ex-anchor" href="#&#x5341;&#x5B57;&#x94FE;&#x8868;&#x5B58;&#x50A8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5341;&#x5B57;&#x94FE;&#x8868;&#x5B58;&#x50A8;</h2>
+<p>&#x7528;&#x987A;&#x5E8F;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x5B58;&#x50A8;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;&#x4E09;&#x5143;&#x7EC4;&#x7EBF;&#x6027;&#x8868;&#x7ED3;&#x6784;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#xFF0C;&#x53EF;&#x4EE5;&#x8282;&#x7701;&#x5F88;&#x591A;&#x5B58;&#x50A8;&#x5355;&#x5143;&#xFF0C;&#x4F46;&#x7F3A;&#x70B9;&#x662F;&#x987A;&#x5E8F;&#x8868;&#x7684;&#x957F;&#x5EA6;&#x4E0D;&#x6613;&#x8BBE;&#x5B9A;&#xFF0C;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x6EA2;&#x51FA;&#x4E0E;&#x6D6A;&#x8D39;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<ul>
+<li>&#x5F53;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x589E;&#x52A0;&#x6216;&#x51CF;&#x5C11;&#x65F6;&#xFF0C;&#x82E5;&#x77E9;&#x9635;&#x5143;&#x7D20;&#x7684;&#x503C;&#x7531;&#x96F6;&#x5143;&#x7D20;&#x53D8;&#x6210;&#x975E;&#x96F6;&#x5143;&#x7D20;&#xFF0C;&#x5C31;&#x8981;&#x5411;&#x987A;&#x5E8F;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x4E09;&#x5143;&#x7EC4;&#xFF1B;&#x82E5;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x53D8;&#x6210;&#x975E;&#x96F6;&#x5143;&#x7D20;&#xFF0C;&#x5C31;&#x8981;&#x4ECE;&#x987A;&#x5E8F;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x4E09;&#x5143;&#x7EC4;&#x3002;</li>
+<li>&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x987A;&#x5E8F;&#x8868;&#x6570;&#x636E;&#x5143;&#x7D20;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x5BF9;&#x987A;&#x5E8F;&#xFF0C;&#x8FDB;&#x884C;&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x79FB;&#x52A8;&#x6570;&#x636E;&#x5143;&#x7D20;&#xFF0C;&#x64CD;&#x4F5C;&#x5F88;&#x4E0D;&#x65B9;&#x4FBF;&#x3002;</li>
+</ul>
+<p>&#x4EE5;&#x94FE;&#x5F0F;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x5B58;&#x50A8;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;&#x4E09;&#x5143;&#x7EC4;&#x7EBF;&#x6027;&#x8868;&#x53EF;&#x4EE5;&#x514B;&#x670D;&#x8FD9;&#x4E9B;&#x4E0D;&#x8DB3;&#xFF0C;&#x79F0;&#x4E4B;&#x4E3A;<strong>&#x5341;&#x5B57;&#x94FE;&#x8868;</strong>&#x3002;</p>
+<p>&#x5728;&#x4E09;&#x5143;&#x7EC4;&#x5341;&#x5B57;&#x94FE;&#x8868;&#x8868;&#x793A;&#x4E2D;&#xFF0C;<strong>&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;&#x6709;&#x4E94;&#x4E2A;&#x57DF;</strong>&#xFF0C;&#x9664;&#x4E86;&#x884C;&#x53F7;&#x3001;&#x5217;&#x53F7;&#x548C;&#x503C;&#x8FD9;&#x4E09;&#x4E2A;&#x57DF;&#x5916;&#xFF0C;&#x53E6;&#x8BBE;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#x57DF; right &#x548C; down&#xFF1A;</p>
+<ul>
+<li><strong>right &#x57DF;</strong> - &#x6307;&#x5411;&#x540C;&#x4E00;&#x884C;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x7684;&#x6307;&#x9488;&#x3002;</li>
+<li><strong>down &#x57DF;</strong> - &#x6307;&#x5411;&#x540C;&#x4E00;&#x5217;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x7684;&#x6307;&#x9488;&#x3002;</li>
+</ul>
+<p>&#x901A;&#x8FC7; right &#x6307;&#x9488;&#x628A;&#x540C;&#x4E00;&#x884C;&#x7684;&#x6240;&#x6709;&#x4E09;&#x5143;&#x7EC4;&#x94FE;&#x63A5;&#x6210;&#x4E00;&#x4E2A;&#x5355;&#x94FE;&#x8868;&#xFF0C;&#x901A;&#x8FC7; down &#x6307;&#x9488;&#x628A;&#x540C;&#x4E00;&#x5217;&#x7684;&#x6240;&#x6709;&#x4E09;&#x5143;&#x7EC4;&#x8FDE;&#x63A5;&#x6210;&#x4E00;&#x4E2A;&#x5355;&#x94FE;&#x8868;&#xFF0C;&#x8FD9;&#x6837;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x5341;&#x5B57;&#x4EA4;&#x53C9;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x6545;&#x79F0;&#x5176;&#x4E3A;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x4E09;&#x5143;&#x7EC4;&#x7684;&#x5341;&#x5B57;&#x94FE;&#x8868;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#xFF0C;&#x793A;&#x610F;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="D:/Program Files (x86" alt="">/github/data-structure/_gitbook/articles/07 &#x77E9;&#x9635;/images/&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;&#x5341;&#x5B57;&#x94FE;&#x8868;.png)</p>
+<h1 id="&#x8F6C;&#x7F6E;"><a name="&#x8F6C;&#x7F6E;" class="anchor-navigation-ex-anchor" href="#&#x8F6C;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8F6C;&#x7F6E;</h1>
+<h2 id="&#x666E;&#x901A;&#x8F6C;&#x7F6E;"><a name="&#x666E;&#x901A;&#x8F6C;&#x7F6E;" class="anchor-navigation-ex-anchor" href="#&#x666E;&#x901A;&#x8F6C;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x666E;&#x901A;&#x8F6C;&#x7F6E;</h2>
+<p>&#x7A00;&#x758F;&#x77E9;&#x9635;&#x64CD;&#x4F5C;&#x7684;&#x8BA8;&#x8BBA;&#x91CD;&#x70B9;&#x662F;<strong>&#x8F6C;&#x7F6E;&#x64CD;&#x4F5C;</strong>&#x3002;</p>
+<p>&#x8981;&#x5B9E;&#x73B0;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;&#x8F6C;&#x7F6E;&#x64CD;&#x4F5C;&#xFF0C;&#x9700;&#x8981;&#x6BD4;&#x8F83; A &#x548C; B &#x4E24;&#x4E92;&#x4E3A;<strong>&#x8F6C;&#x7F6E;&#x77E9;&#x9635;</strong>&#x7684;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x3002;&#x82E5;&#x4E24;&#x4E2A;&#x77E9;&#x9635;&#x5728;&#x884C;&#x5217;&#x4E92;&#x6362;&#x540E;&#x4E0E;&#x5BF9;&#x65B9;&#x76F8;&#x7B49;&#xFF0C;&#x5219;&#x79F0;&#x5B83;&#x4EEC;&#x4E92;&#x4E3A;&#x8F6C;&#x7F6E;&#x77E9;&#x9635;&#xFF0C;&#x793A;&#x610F;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="D:\Program Files (x86" alt="">\github\data-structure_gitbook\articles\07 &#x77E9;&#x9635;\images\&#x8F6C;&#x7F6E;&#x77E9;&#x9635;.png)</p>
+<p>&#x82E5;&#x77E9;&#x9635; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">A</span></span></span></span> &#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mrow><mo>&#xD7;</mo></mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">m{\times}n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mord textstyle uncramped"><span class="mord">&#xD7;</span></span><span class="mord mathit">n</span></span></span></span> &#x7684;&#x89C4;&#x6A21;&#xFF0C;&#x5219;&#x5B83;&#x7684;&#x8F6C;&#x7F6E;&#x77E9;&#x9635; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span> &#x5C31;&#x662F; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mrow><mo>&#xD7;</mo></mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">n{\times}m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mord textstyle uncramped"><span class="mord">&#xD7;</span></span><span class="mord mathit">m</span></span></span></span> &#x7684;&#x89C4;&#x6A21;&#xFF0C;&#x4E14;&#x6709;&#xFF1A;</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><mi>r</mi><mi>o</mi><mi>w</mi><mo separator="true">,</mo><mi>c</mi><mi>o</mi><mi>l</mi><mo>)</mo><mo>=</mo><mi>B</mi><mo>(</mo><mi>c</mi><mi>o</mi><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mi>o</mi><mi>w</mi><mo>)</mo><mtext>&#xA0;</mtext><mo>(</mo><mn>1</mn><mo>&#x2264;</mo><mrow><mi>r</mi><mi>o</mi><mi>w</mi></mrow><mo>&#x2264;</mo><mrow><mi>n</mi></mrow><mo separator="true">,</mo><mn>1</mn><mo>&#x2264;</mo><mrow><mi>c</mi><mi>o</mi><mi>l</mi></mrow><mo>&#x2264;</mo><mrow><mi>m</mi></mrow><mo>)</mo></mrow><annotation encoding="application/x-tex">
+A(row,col)=B(col,row)\ (1\leq{row}\leq{n},1\leq{col}\leq{m})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">A</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mord mathit">c</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mopen">(</span><span class="mord mathit">c</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="mclose">)</span><span class="mopen"><span class="mspace">&#xA0;</span><span class="mopen">(</span></span><span class="mord mathrm">1</span><span class="mrel">&#x2264;</span><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.02691em;">w</span></span><span class="mrel">&#x2264;</span><span class="mord textstyle uncramped"><span class="mord mathit">n</span></span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mrel">&#x2264;</span><span class="mord textstyle uncramped"><span class="mord mathit">c</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.01968em;">l</span></span><span class="mrel">&#x2264;</span><span class="mord textstyle uncramped"><span class="mord mathit">m</span></span><span class="mclose">)</span></span></span></span></p>
+<p>&#x5047;&#x8BBE; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span></span></span></span> &#x548C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">b</span></span></span></span> &#x662F; Matrix &#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5206;&#x522B;&#x8868;&#x793A;&#x77E9;&#x9635; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">A</span></span></span></span> &#x548C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span>&#x3002;&#x82E5;&#x8981;&#x7531; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span></span></span></span> &#x8F6C;&#x5316;&#x5F97;&#x5230; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">b</span></span></span></span>&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x4EE5;&#x4E0B;&#x4E09;&#x4E2A;&#x65B9;&#x9762;&#x7684;&#x53D8;&#x6362;&#xFF1A;</p>
+<ol>
+<li>&#x5C06;&#x77E9;&#x9635;&#x7684;&#x884C;&#x5217;&#x503C;&#x4E92;&#x6362;&#x3002;</li>
+<li>&#x5C06;&#x6BCF;&#x4E2A;&#x4E09;&#x5143;&#x7EC4;&#x4E2D;&#x7684; row &#x548C; col &#x503C;&#x4E92;&#x6362;&#x3002;</li>
+<li>&#x8C03;&#x6574;&#x4E09;&#x5143;&#x7EC4;&#x4E4B;&#x95F4;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x6309; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span> &#x7684;&#x884C;&#x4E3A;&#x4E3B;&#x5E8F;&#x4F9D;&#x6B21;&#x6392;&#x5217;&#x3002;</li>
+</ol>
+<p>&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span></span></span></span> &#x5230; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">b</span></span></span></span> &#x7684;&#x8F6C;&#x6362;&#x3002;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x628A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span></span></span></span> &#x4E09;&#x5143;&#x7EC4;&#x4E2D;&#x7684; row &#x548C; col &#x4E92;&#x6362;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5BF9;&#x65B0;&#x7684;&#x4E09;&#x5143;&#x7EC4;&#x884C;&#x53F7;&#x6309;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x6392;&#x5217;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">b</span></span></span></span> &#x7684;&#x4E09;&#x5143;&#x7EC4;&#xFF0C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A; <strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>e</mi><mrow><mi mathvariant="normal">_</mi></mrow><mi>n</mi><mi>u</mi><msup><mi>m</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(e{\_}num^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.1241079999999999em;vertical-align:-0.31em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">e</span><span class="mord textstyle uncramped"><span class="mord mathrm" style="margin-right:0.02778em;">_</span></span><span class="mord mathit">n</span><span class="mord mathit">u</span><span class="mord"><span class="mord mathit">m</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mclose">)</span></span></span></span></strong>&#xFF0C;&#x4E00;&#x822C;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-function">Status <span class="hljs-title">TransposeMatrix</span><span class="hljs-params">(Matrix a, Matrix &amp;b)</span> </span>{
+    <span class="hljs-comment">// &#x6CA1;&#x6709;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x65F6;&#x7EC8;&#x6B62;&#x6267;&#x884C;</span>
+    <span class="hljs-keyword">if</span> (!a.e_num) {
+        <span class="hljs-keyword">return</span> ERROR;
+    }
+    <span class="hljs-comment">// &#x5C06; a &#x8F6C;&#x7F6E;&#x7ED9; b</span>
+    b.row_num = a.row_num;
+    b.col_num = a.col_num;
+    b.e_num = a.e_num;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= a.e_num; i++) {
+        b.<span class="hljs-built_in">array</span>[i].row = a.<span class="hljs-built_in">array</span>[i].col;
+        b.<span class="hljs-built_in">array</span>[i].col = a.<span class="hljs-built_in">array</span>[i].row;
+        b.<span class="hljs-built_in">array</span>[i].e = a.<span class="hljs-built_in">array</span>[i].e;
+    }
+    <span class="hljs-comment">// &#x4E3A; b &#x6309;&#x7167;&#x884C;&#x5217;&#x987A;&#x5E8F;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x6392;&#x5217;</span>
+    Triple temp;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= b.e_num - <span class="hljs-number">1</span>; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= b.e_num - i; j++) {
+            <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x5728; a &#x91CC;&#x9762;&#x5DF2;&#x7ECF;&#x662F;&#x6309;&#x7167;&#x884C;&#x5E8F;&#x987A;&#x5E8F;&#x6392;&#x5217;&#x4E86;&#xFF0C;&#x5728; b &#x91CC;&#x884C;&#x8F6C;&#x6362;&#x6210;&#x5217;&#x540E;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x987A;&#x5E8F;&#x6392;&#x5217;&#x884C;</span>
+            <span class="hljs-keyword">if</span> (b.<span class="hljs-built_in">array</span>[j].row &gt; b.<span class="hljs-built_in">array</span>[j + <span class="hljs-number">1</span>].row) {
+                temp = b.<span class="hljs-built_in">array</span>[j];
+                b.<span class="hljs-built_in">array</span>[j] = b.<span class="hljs-built_in">array</span>[j + <span class="hljs-number">1</span>];
+                b.<span class="hljs-built_in">array</span>[j + <span class="hljs-number">1</span>] = temp;
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> OK;
+}
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x4E00;&#x904D;&#x53C8;&#x4E00;&#x904D;&#x626B;&#x63CF;&#x77E9;&#x9635;&#xFF0C;&#x800C;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x4E0D;&#x9700;&#x8981;&#x5728; row &#x548C; col &#x4E92;&#x6362;&#x540E;&#x5BF9;&#x65B0;&#x7684;&#x4E09;&#x5143;&#x7EC4;&#x91CD;&#x65B0;&#x6392;&#x5217;&#xFF0C;&#x6539;&#x800C;&#x628A; row &#x548C; col &#x4EA4;&#x6362;&#x540E;&#x76F4;&#x63A5;&#x653E;&#x5728;&#x6B63;&#x786E;&#x7684;&#x4F4D;&#x7F6E;&#x4E0A;&#xFF0C;&#x63D0;&#x9AD8;&#x8F6C;&#x7F6E;&#x6548;&#x7387;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x7684;<strong>&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;&#x7B97;&#x6CD5;</strong>&#x3002;</p>
+<h2 id="&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;"><a name="&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;" class="anchor-navigation-ex-anchor" href="#&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;</h2>
+<p>&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;&#x7B97;&#x6CD5;&#x7684;&#x5173;&#x952E;&#x662F;&#x8981;<strong>&#x786E;&#x5B9A;&#x77E9;&#x9635; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">A</span></span></span></span> &#x4E2D;&#x6BCF;&#x4E00;&#x5217;&#xFF08;&#x7B49;&#x4E8E; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span> &#x4E2D;&#x6BCF;&#x4E00;&#x884C;&#xFF09;&#x7B2C;&#x4E00;&#x4E2A;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x5728; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">b</span></span></span></span> &#x4E2D;&#x7684;&#x5173;&#x952E;&#x4F4D;&#x7F6E;</strong>&#xFF0C;&#x4E0E;&#x8FD9;&#x4E9B;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x540C;&#x5217;&#x7684;&#x4E09;&#x5143;&#x7EC4;&#x5C31;&#x4F9D;&#x6B21;&#x653E;&#x5728;&#x5B83;&#x4EEC;&#x540E;&#x9762;&#x3002;&#x4E3A;&#x4E86;&#x8BB0;&#x5F55;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x9700;&#x8981;&#x5F15;&#x5165;&#x4E24;&#x4E2A;&#x8F85;&#x52A9;&#x6570;&#x7EC4; num &#x548C; first&#xFF1A;</p>
+<ul>
+<li><strong>num &#x6570;&#x7EC4;</strong> - &#x7528;&#x6765;&#x5B58;&#x653E;&#x4E8B;&#x5148;&#x7EDF;&#x8BA1;&#x7684;&#x7A00;&#x758F;&#x77E9;&#x9635; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">A</span></span></span></span> &#x5404;&#x5217;&#x7684;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8F6C;&#x7F6E;&#x77E9;&#x9635; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span> &#x5404;&#x884C;&#x7684;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x3002;</li>
+<li><strong>first &#x6570;&#x7EC4;</strong> - &#x7528;&#x6765;&#x5B58;&#x653E;&#x4E8B;&#x5148;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;&#x7A00;&#x758F;&#x77E9;&#x9635;&#x5404;&#x884C;&#x4E09;&#x5143;&#x7EC4;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5728;&#x8F6C;&#x7F6E;&#x77E9;&#x9635; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span> &#x4E2D;&#x5E94;&#x5B58;&#x653E;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x3002;</li>
+</ul>
+<p>&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;&#x7684;&#x4E00;&#x822C;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-function">Status <span class="hljs-title">FastTransposeMatrix</span><span class="hljs-params">(Matrix a, Matrix &amp;b)</span> </span>{
+    <span class="hljs-comment">// &#x6CA1;&#x6709;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x65F6;&#x7EC8;&#x6B62;&#x6267;&#x884C;</span>
+    <span class="hljs-keyword">if</span> (!a.e_num) {
+        <span class="hljs-keyword">return</span> ERROR;
+    }
+
+    <span class="hljs-comment">// &#x8F85;&#x52A9;&#x6570;&#x7EC4;&#xFF0C;&#x540C;&#x6837;&#x7684;&#xFF0C;0 &#x4E0B;&#x6807;&#x4E0D;&#x5B58;&#x653E;&#x503C;&#xFF0C;&#x4ECE; 1 &#x4E0B;&#x6807;&#x5F00;&#x59CB;</span>
+    <span class="hljs-keyword">int</span> num[a.col_num + <span class="hljs-number">1</span>], first[a.col_num + <span class="hljs-number">1</span>];
+    <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316; num </span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; a.col_num + <span class="hljs-number">1</span>; i++) {
+        num[i] = <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-comment">// &#x6C42; a &#x4E2D;&#x6BCF;&#x4E00;&#x5217;&#x542B;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= a.e_num; i++) {
+        num[a.<span class="hljs-built_in">array</span>[i].col]++;
+    }
+    <span class="hljs-comment">// &#x6C42;&#x7B2C; col &#x5217;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x975E;&#x96F6;&#x5143;&#x7D20;&#x5728; b &#x4E2D;&#x7684;&#x5E8F;&#x53F7;</span>
+    first[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= a.col_num; i++) {
+        first[i] = first[i - <span class="hljs-number">1</span>] + num[i - <span class="hljs-number">1</span>];
+    }
+
+    <span class="hljs-comment">// &#x8F6C;&#x7F6E;</span>
+    b.row_num = a.row_num;
+    b.col_num = a.col_num;
+    b.e_num = a.e_num;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= a.e_num; i++) {
+        <span class="hljs-comment">// &#x901A;&#x8FC7;&#x8F85;&#x52A9;&#x6570;&#x7EC4;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x5E94;&#x5F53;&#x5B58;&#x50A8;&#x5728; b &#x7684;&#x4F55;&#x5904;&#xFF08;&#x4E0B;&#x6807;&#xFF09;</span>
+        <span class="hljs-comment">// &#x540C;&#x65F6;&#x56E0;&#x4E3A;&#x540C;&#x884C;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x4E2A;&#x975E;&#x96F6;&#x5143;&#x7D20;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x4F7F;&#x5176;&#x503C;&#x52A0;&#x4E00;&#xFF0C;&#x8BA9;&#x540E;&#x7EED;&#x7684;&#x5143;&#x7D20;&#x88AB;&#x6B63;&#x786E;&#x5730;&#x5B58;&#x50A8;</span>
+        <span class="hljs-keyword">int</span> b_idx = first[a.<span class="hljs-built_in">array</span>[i].col]++;
+        b.<span class="hljs-built_in">array</span>[b_idx].row = a.<span class="hljs-built_in">array</span>[i].col;
+        b.<span class="hljs-built_in">array</span>[b_idx].col = a.<span class="hljs-built_in">array</span>[i].row;
+        b.<span class="hljs-built_in">array</span>[b_idx].e = a.<span class="hljs-built_in">array</span>[i].e;
+    }
+    <span class="hljs-keyword">return</span> OK;
+}
+</code></pre>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x5F53; e_num &#x8FDC;&#x5C0F;&#x4E8E; row_num+col_num &#x4E14; e_num&gt;col_num &#x65F6;&#xFF0C;&#x8F6C;&#x7F6E;&#x64CD;&#x4F5C;&#x9009;&#x7528;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A; <strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>c</mi><mi>o</mi><mi>l</mi><mrow><mi mathvariant="normal">_</mi></mrow><mi>n</mi><mi>u</mi><mi>m</mi><mo>+</mo><mi>e</mi><mrow><mi mathvariant="normal">_</mi></mrow><mi>n</mi><mi>u</mi><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(col{\_}num+e{\_}num)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.06em;vertical-align:-0.31em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">c</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord textstyle uncramped"><span class="mord mathrm" style="margin-right:0.02778em;">_</span></span><span class="mord mathit">n</span><span class="mord mathit">u</span><span class="mord mathit">m</span><span class="mbin">+</span><span class="mord mathit">e</span><span class="mord textstyle uncramped"><span class="mord mathrm" style="margin-right:0.02778em;">_</span></span><span class="mord mathit">n</span><span class="mord mathit">u</span><span class="mord mathit">m</span><span class="mclose">)</span></span></span></span></strong> &#x7684;&#x5FEB;&#x901F;&#x8F6C;&#x7F6E;&#x7B97;&#x6CD5;&#xFF0C;&#x867D;&#x7136;&#x9700;&#x8981;&#x53E6;&#x5916;&#x589E;&#x52A0;&#x4E24;&#x4E2A;&#x8F85;&#x52A9;&#x6570;&#x7EC4;&#xFF0C;&#x4F46;&#x5B83;&#x7684;&#x6548;&#x7387;&#x662F;&#x6700;&#x9AD8;&#x7684;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="04 对角矩阵.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 对角矩阵">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"稀疏矩阵","level":"1.8.5","depth":2,"next":{"title":"广义表","level":"1.9","depth":1,"ref":"","articles":[{"title":"广义表的基本概念","level":"1.9.1","depth":2,"path":"articles/08 广义表/01 广义表的基本概念.md","ref":"articles/08 广义表/01 广义表的基本概念.md","articles":[]},{"title":"广义表的存储结构","level":"1.9.2","depth":2,"path":"articles/08 广义表/02 广义表的存储结构.md","ref":"articles/08 广义表/02 广义表的存储结构.md","articles":[]}]},"previous":{"title":"对角矩阵","level":"1.8.4","depth":2,"path":"articles/07 矩阵/04 对角矩阵.md","ref":"articles/07 矩阵/04 对角矩阵.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchor-navigation-ex","katex","code"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"size":2,"family":"serif","theme":"white"},"highlight":{},"anchor-navigation-ex":{"showLevelIcon":false,"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":false,"multipleH2":false,"associatedWithSummary":true,"multipleH3":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"multipleH4":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"数据结构","language":"zh-hans","gitbook":"*"},"file":{"path":"articles/07 矩阵/05 稀疏矩阵.md","mtime":"2023-02-10T19:05:58.275Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-10T20:01:19.268Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
